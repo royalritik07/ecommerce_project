@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block title %}SignUp{% endblock title %}
+
+{% block content %}
+
+<div class="card bg-light mt-5 p-3">
+  <!-- <h3 class="text-dark">Signup</h3> -->
+  <form action="/auth/signup/" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    {% if messages %}
+    <div class="alert alert-primary" role="alert">
+      {% for message in messages %}
+      {{message}}
+      {% endfor %}
+    </div>
+    {% endif %}
+
+
+    <label for="email">Email</label>
+    <div class="form-group">
+      <input type="email" class="form-control" name="email" required>
+    </div>
+
+    <label for="password">Password</label>
+    <div class="form-group">
+      <input type="password" class="form-control" name="password" required>
+    </div>
+
+    <label for="confirm_password">Confirm Password</label>
+    <div class="form-group">
+      <input type="password" class="form-control" name="confirm_password" required>
+    </div>
+    <br>
+
+    <button type="submit" class="btn btn-dark">Submit</button>
+    <br>
+    Already a user ?<a href="/auth/login/">Login</a>
+    <br>
+
+  </form>
+</div>
+
+
+
+
+{% endblock %}
